@@ -62,7 +62,7 @@ CREATE TABLE Trade (
     FOREIGN KEY (BookID) REFERENCES Book(ID),
     FOREIGN KEY (CounterPartyID) REFERENCES CounterParty(ID),
     FOREIGN KEY (SecurityID) REFERENCES Security(ID),
-    CONSTRAINT TradeDate CHECK TradeDate > SettelmentDate
+    CONSTRAINT TradeDate CHECK TradeDate < SettelmentDate
 );
 
 --DROP TABLE IF EXISTS owners;
