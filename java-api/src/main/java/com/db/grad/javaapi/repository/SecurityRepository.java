@@ -12,4 +12,6 @@ import java.util.List;
 public interface SecurityRepository extends JpaRepository<Security,Long> {
 
     List<Security> findAllByMaturityDateBetween(Date start, Date end);
+
+    Security findBystatus();
 }
