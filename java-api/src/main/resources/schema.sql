@@ -17,8 +17,11 @@ CREATE TABLE Book (
 DROP TABLE IF EXISTS BookUser;
 
 CREATE TABLE BookUser (
-    BookID int FOREIGN KEY REFERENCES Book(ID),
-    UserID int FOREIGN KEY REFERENCES User(ID)
+    BookID int ,
+    UserID int,
+    PRIMARY KEY (BookID,UserID),
+    FOREIGN KEY (BookID) REFERENCES Book(ID),
+    FOREIGN KEY (UserID) REFERENCES User(ID)
 );
 
 DROP TABLE IF EXISTS Security;
@@ -47,17 +50,21 @@ DROP TABLE IF EXISTS Trade;
 
 CREATE TABLE Trade (
     ID int NOT NULL PRIMARY KEY,
-    BookID int FOREIGN KEY REFERENCES Book(ID),
-    CounterPartyID int  FOREIGN KEY REFERENCES CounterParty(ID),
-    SecurityID int NOT NULL FOREIGN KEY REFERENCES Security(ID),
+    BookID int ,
+    CounterPartyID int ,
+    SecurityID int NOT NULL ,
     Quantity int,
     Status varchar(32),
     Price float,
     Buy_Sell varchar(4) NOT NULL,
     TradeDate date NOT NULL ,
-    SettelmentDate date NOT NULL ,
+    SettelmentDate date NOT NULL,
+    FOREIGN KEY (BookID) REFERENCES Book(ID),
+    FOREIGN KEY (CounterPartyID) REFERENCES CounterParty(ID),
+    FOREIGN KEY (SecurityID) REFERENCES Security(ID),
     CONSTRAINT TradeDate CHECK TradeDate > SettelmentDate
 );
+
 --DROP TABLE IF EXISTS owners;
 --
 --CREATE TABLE owners (
