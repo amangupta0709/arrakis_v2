@@ -28,10 +28,7 @@ public class SecurityController {
     public List<SecuritiesProjection> getAllSecurities() {
         return securityService.getAllSecurities();
     }
-//    @GetMapping("/securities")
-//    public List<SecuritiesProjection> getAllSecurities() {
-//        return securityService.getAllSecurities();
-//    }
+
     @GetMapping("/securities/date")
     public List<Security> getSecurityByDate(@RequestParam Date start, @RequestParam Date end){
         return securityService.getAllSecuritiesByDate(start,end);
