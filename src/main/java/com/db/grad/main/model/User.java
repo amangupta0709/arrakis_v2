@@ -1,15 +1,12 @@
 package com.db.grad.main.model;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import javax.persistence.*;
+import lombok.*;
 
 import java.util.Set;
 
-@Getter
-@Setter
+@Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -23,6 +20,8 @@ public class User {
     private String name;
 
     private String email;
+
+    private String password;
 
     private String role;
 

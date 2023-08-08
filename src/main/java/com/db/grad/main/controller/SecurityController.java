@@ -5,7 +5,7 @@ import com.db.grad.main.exception.ResourceNotFoundException;
 import com.db.grad.main.model.Security;
 import com.db.grad.main.projection.SecuritiesProjection;
 import com.db.grad.main.service.SecurityService;
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

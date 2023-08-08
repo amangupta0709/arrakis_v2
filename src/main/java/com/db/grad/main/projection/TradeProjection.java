@@ -3,7 +3,7 @@ package com.db.grad.main.projection;
 import com.db.grad.main.model.Book;
 import com.db.grad.main.model.CounterParty;
 import com.db.grad.main.model.Security;
-import jakarta.persistence.ManyToOne;
+import javax.persistence.ManyToOne;
 
 import java.util.Date;
 
