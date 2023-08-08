@@ -34,6 +34,11 @@
             <version>2.7.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
         <!-- H2 database -->
         <dependency>
             <groupId>com.h2database</groupId>
