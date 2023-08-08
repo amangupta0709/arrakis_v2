@@ -11,5 +11,5 @@ import java.util.List;
 @Repository
 public interface TradeRepository extends JpaRepository<Trade,Long> {
 
-    List<Trade> findAllTradesById(long id);
+//    List<Trade> findAllTradesById(long id);
 }

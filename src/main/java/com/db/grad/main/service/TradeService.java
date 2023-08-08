@@ -5,12 +5,12 @@ import com.db.grad.main.exception.ResourceNotFoundException;
 import com.db.grad.main.model.Trade;
 import com.db.grad.main.repository.TradeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Trade;
+import org.springframework.stereotype.Service;
 
 //import java.sql.Date;
 import java.util.List;
 
-//@Trade
+@Service
 public class TradeService {
 
     @Autowired
