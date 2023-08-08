@@ -1,10 +1,11 @@
 package com.db.grad.main.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
+import java.sql.Date;
 
 @Getter
 @Setter
@@ -18,6 +19,7 @@ public class Security {
     private String isin;
 
     private String cusip;
+
 
     private Date maturityDate;
 
