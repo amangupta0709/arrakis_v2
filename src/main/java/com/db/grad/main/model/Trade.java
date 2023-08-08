@@ -22,11 +22,12 @@ public class Trade {
 
     private String buySell;
 
-    private Date trade_date;
+    private Date tradeDate;
 
-    private Date settlement_date;
+    private Date settlementDate;
 
     @ManyToOne
+
     private CounterParty counterParty;
 
     @ManyToOne
