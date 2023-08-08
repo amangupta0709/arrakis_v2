@@ -1,0 +1,65 @@
+package com.db.grad.main.service;
+
+//import com.db.grad.javaapi.exception.ResourceNotFoundException;
+//import com.db.grad.javaapi.model.Dogs;
+import com.db.grad.main.model.Trade;
+import com.db.grad.main.repository.TradeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Trade;
+
+import java.sql.Date;
+import java.util.List;
+
+@Trade
+public class TradeService {
+
+    @Autowired
+    TradeRepository tradeRepository;
+
+
+    public Trade saveSecurity(Trade trade )
+    {
+        return tradeRepository.saveAndFlush(trade);
+    }
+    public List<Trade> getAllTrades()
+    {
+        return tradeRepository.findAll();
+    }
+
+    public List<Trade> getAllTradesByDate(Date start, Date end)
+    {
+        List<Trade> filteredTrades =  tradeRepository.findAllByMaturityDateBetween(start,end);
+//                .orElseThrow(() -> new ResourceNotFoundException("Trade not found for this date range:: "));
+        return filteredTrades;
+    }
+
+    public Trade findTradeById(long id ) throws ResourceNotFoundException
+    {
+        Trade  trade = tradeRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Trade not found for this id :: " + id));
+        return trade;
+    }
+
+    public Trade updateTrade( long id, Trade newTradeInfo) throws ResourceNotFoundException
+    {
+        Trade tradeToUpdate = tradeRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Trade not found for this id :: " + id));
+
+        tradeToUpdate.setStatus(newTradeInfo.getStatus());
+
+        final Trade updatedTrade = tradeRepository.save(tradeToUpdate);
+
+        return updatedTrade;
+    }
+
+
+    public Trade deleteTrade( long id ) throws ResourceNotFoundException
+    {
+        Trade trade = tradeRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Trade not found for this id :: " + id));
+
+        tradeRepository.delete(trade);
+
+        return trade;
+    }
+}

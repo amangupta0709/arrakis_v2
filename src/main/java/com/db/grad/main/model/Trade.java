@@ -22,7 +22,9 @@ public class Trade {
 
     private String buySell;
 
-    private Date trade_time;
+    private Date trade_date;
+    
+    private Date settlement_date;
 
     @ManyToOne
     private CounterParty counterParty;
