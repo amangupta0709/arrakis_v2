@@ -1,12 +1,11 @@
 package com.db.grad.main.model;
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+import java.sql.Date;
 
 @Getter
 @Setter
@@ -22,6 +21,7 @@ public class Security {
     private String isin;
 
     private String cusip;
+
 
     private Date maturityDate;
 
