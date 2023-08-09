@@ -53,17 +53,17 @@ public class TradeService {
         return trade.getSecurity();
     }
 
-//    public Trade updateTrade( long id, Trade newTradeInfo) throws ResourceNotFoundException
-//    {
-//        Trade tradeToUpdate = tradeRepository.findById(id)
-//                .orElseThrow(() -> new ResourceNotFoundException("Trade not found for this id :: " + id));
-//
-//        tradeToUpdate.setStatus(newTradeInfo.getStatus());
-//
-//        final Trade updatedTrade = tradeRepository.save(tradeToUpdate);
-//
-//        return updatedTrade;
-//    }
+    public Trade updateTrade( long id, Trade newTradeInfo) throws ResourceNotFoundException
+    {
+        Trade tradeToUpdate = tradeRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Trade not found for this id :: " + id));
+//        String s = .orElseThrow(()-> new NullPointerException("status is null");
+        tradeToUpdate.setStatus(newTradeInfo.getStatus());
+
+        final Trade updatedTrade = tradeRepository.save(tradeToUpdate);
+
+        return updatedTrade;
+    }
 
 
     public Trade deleteTrade( long id ) throws ResourceNotFoundException

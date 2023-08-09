@@ -37,6 +37,8 @@ public class Trade {
     @ManyToOne
     private Security security;
 
+
+
     @ManyToOne
     private Book book;
 }
