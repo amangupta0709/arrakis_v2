@@ -17,7 +17,7 @@ import java.util.Map;
 
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/trade")
 @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:8080"})
 public class TradeController {
 
@@ -28,17 +28,17 @@ public class TradeController {
         tradeService = ts;
     }
 
-    @GetMapping("/trades")
+    @GetMapping("/")
     public List<TradeProjection> getAllTrades() {
         return tradeService.getAllTradesFiltered();
     }
 
-    @PostMapping("/trades")
+    @PostMapping("/")
     public Trade createTrade(@Valid @RequestBody Trade trade) {
         return tradeService.saveTrade(trade);
     }
 
-    @GetMapping("/trades/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<TradeProjection> getTradeById(@PathVariable(value = "id") Long id)
             throws ResourceNotFoundException {
         TradeProjection trade = tradeService.findTradeById(id);

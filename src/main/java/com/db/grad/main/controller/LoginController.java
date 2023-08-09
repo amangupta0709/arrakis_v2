@@ -28,7 +28,7 @@ public class LoginController {
     @Autowired
     private UserService userService;
     @CrossOrigin(origins = "*")
-    @PostMapping("login/")
+    @PostMapping("login")
     public ResponseEntity<?> login(@RequestBody LoginDetails loginDetails) {
         String email = loginDetails.getEmail();
         String password = loginDetails.getPassword();
@@ -45,9 +45,8 @@ public class LoginController {
             String token = jwtUtil.generateToken(email);
             Map<String, Object> response = new HashMap<>();
             User user = userService.getUserByEmail(email);
-            user.setPassword("");
-            response.put("token", token);
-            response.put("user", user);
+            response.put("authtoken", token);
+            response.put("name", user.getName());
             return ResponseEntity.ok(response);
         }
         return ResponseEntity.status(401).body("Invalid username/password");

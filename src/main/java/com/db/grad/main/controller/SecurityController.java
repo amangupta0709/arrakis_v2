@@ -14,8 +14,8 @@ import java.sql.Date;
 import java.util.*;
 
 @RestController
-@RequestMapping("/api/v1")
-@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:8080"})
+@RequestMapping("/api/security")
+@CrossOrigin(origins = "*")
 public class SecurityController {
     private SecurityService securityService;
 
@@ -24,29 +24,29 @@ public class SecurityController {
         securityService = ss;
     }
 
-    @GetMapping("/securities")
+    @GetMapping("/")
     public List<SecuritiesProjection> getAllSecurities() {
         return securityService.getAllSecurities();
     }
 
-    @GetMapping("/securities/date")
+    @GetMapping("/date")
     public List<Security> getSecurityByDate(@RequestParam Date start, @RequestParam Date end){
         return securityService.getAllSecuritiesByDate(start,end);
     }
 
-    @PostMapping("/securities")
+    @PostMapping("/")
     public Security createSecurity(@Valid @RequestBody Security security) {
         return securityService.saveSecurity(security);
     }
 
-    @GetMapping("/securities/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Security> getSecurityById(@PathVariable(value = "id") Long id)
             throws ResourceNotFoundException {
         Security security = securityService.findSecurityById(id);
         return ResponseEntity.ok().body(security);
     }
 
-    @PutMapping("/securities/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Security> updateSecurity(@PathVariable(value = "id") Long id,
                                                    @Valid @RequestBody Security newSecurityInfo) throws ResourceNotFoundException {
 
@@ -57,7 +57,7 @@ public class SecurityController {
 
 
 
-    @DeleteMapping("/securities/{id}")
+    @DeleteMapping("/{id}")
     public Map<String, Boolean> deleteSecurity(@PathVariable(value = "id") Long id)
             throws ResourceNotFoundException {
         Security security = securityService.deleteSecurity(id);
