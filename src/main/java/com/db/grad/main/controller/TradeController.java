@@ -62,15 +62,6 @@ public class TradeController {
         Trade trade = tradeService.updateTrade(id,newTradeInfo);
         return ResponseEntity.ok().body(trade);
     }
-    @DeleteMapping("/trades/{id}")
-    public Map<String, Boolean> deleteTrade(@PathVariable(value = "id") Long id)
-            throws ResourceNotFoundException {
-        Trade trade = tradeService.deleteTrade(id);
-
-        Map<String, Boolean> response = new HashMap<>();
-        response.put("deleted", Boolean.TRUE);
-        return response;
-    }
 }
 
 

@@ -57,7 +57,7 @@ public class TradeService {
     {
         Trade tradeToUpdate = tradeRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Trade not found for this id :: " + id));
-//        String s = .orElseThrow(()-> new NullPointerException("status is null");
+
         tradeToUpdate.setStatus(newTradeInfo.getStatus());
 
         final Trade updatedTrade = tradeRepository.save(tradeToUpdate);
@@ -65,14 +65,4 @@ public class TradeService {
         return updatedTrade;
     }
 
-
-    public Trade deleteTrade( long id ) throws ResourceNotFoundException
-    {
-        Trade trade = tradeRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Trade not found for this id :: " + id));
-
-        tradeRepository.delete(trade);
-
-        return trade;
-    }
 }
