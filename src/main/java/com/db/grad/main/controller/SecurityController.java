@@ -3,9 +3,12 @@ package com.db.grad.main.controller;
 
 import com.db.grad.main.exception.ResourceNotFoundException;
 import com.db.grad.main.model.Security;
+import com.db.grad.main.model.Trade;
 import com.db.grad.main.projection.SecuritiesProjection;
 import com.db.grad.main.service.SecurityService;
 import javax.validation.Valid;
+
+import com.db.grad.main.service.TradeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,8 +22,11 @@ import java.util.*;
 public class SecurityController {
     private SecurityService securityService;
 
+    private TradeService tradeService;
+
     @Autowired
-    public SecurityController(SecurityService ss) {
+    public SecurityController(TradeService ts,SecurityService ss){
+        tradeService = ts;
         securityService = ss;
     }
 
@@ -37,6 +43,14 @@ public class SecurityController {
     @PostMapping("/")
     public Security createSecurity(@Valid @RequestBody Security security) {
         return securityService.saveSecurity(security);
+    }
+
+
+    @GetMapping("/{id}/trades")
+    public ResponseEntity<List<Trade>> getTradesBySecurityId(@PathVariable(value = "id") Long id)
+           throws ResourceNotFoundException {
+        List<Trade> trades = tradeService.getTrades(id);
+        return ResponseEntity.ok().body(trades);
     }
 
     @GetMapping("/{id}")
