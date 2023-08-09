@@ -27,14 +27,10 @@ public class TradeService {
         return tradeRepository.findTrades();
     }
 
-
-
-//    public List<Trade> getTradesById(long id)
-//    {
-//        List<Trade> filteredTrades =  tradeRepository.findAllTradesById(id);
-////                .orElseThrow(() -> new ResourceNotFoundException("Trade not found for this ID: "));
-//        return filteredTrades;
-//    }
+  public  List<Trade> getTrades(long id) throws ResourceNotFoundException
+  {
+      return tradeRepository.findAllBySecurityId(id);
+  }
 
     public TradeProjection findTradeById(long id ) throws ResourceNotFoundException
     {
